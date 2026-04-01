@@ -3,8 +3,27 @@ let default_mod = "MyModName"; let default_author = "Cratior"; let default_desc 
     <TargetFramework>netstandard2.1</TargetFramework>
     <LangVersion>8.0</LangVersion>
     <ImplicitUsings>false</ImplicitUsings>
-  </PropertyGroup>
-  <ItemGroup>
+
+    <!-- Performance (safe for Unity + Debug) -->
+    <Optimize>true</Optimize>
+    <Deterministic>true</Deterministic>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+
+    <!-- Debug but fast -->
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+
+    <!-- JIT optimizations -->
+    <TieredCompilation>true</TieredCompilation>
+    <TieredCompilationQuickJit>true</TieredCompilationQuickJit>
+    <TieredCompilationQuickJitForLoops>true</TieredCompilationQuickJitForLoops>
+
+    <!-- Reduce runtime overhead -->
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <UseSystemResourceKeys>true</UseSystemResourceKeys>
+</PropertyGroup>
+
+<ItemGroup>
     <Reference Include="0Harmony"><HintPath>dependacies\0Harmony.dll</HintPath></Reference>
     <Reference Include="Assembly-CSharp"><HintPath>dependacies\Assembly-CSharp.dll</HintPath></Reference>
     <Reference Include="Newtonsoft.Json"><HintPath>dependacies\Newtonsoft.Json.dll</HintPath></Reference>
@@ -16,14 +35,20 @@ let default_mod = "MyModName"; let default_author = "Cratior"; let default_desc 
     <Reference Include="UnityEngine.TextRenderingModule"><HintPath>dependacies\UnityEngine.TextRenderingModule.dll</HintPath></Reference>
     <Reference Include="UnityEngine.UI"><HintPath>dependacies\UnityEngine.UI.dll</HintPath></Reference>
     <Reference Include="UnityEngine.UIModule"><HintPath>dependacies\UnityEngine.UIModule.dll</HintPath></Reference>
-  </ItemGroup>
-  <Target Name="CopyModToSFS" AfterTargets="Build">
+</ItemGroup>
+
+<Target Name="CopyModToSFS" AfterTargets="Build">
     <PropertyGroup>
       <SFSModsPath>' + $sfs_path + '</SFSModsPath>
     </PropertyGroup>
+
     <Message Text="Copying mod to $(SFSModsPath)" Importance="high" />
-    <Copy SourceFiles="' + '$(OutputPath)' + '$(AssemblyName).dll" DestinationFolder="' + '$(SFSModsPath)' + '" SkipUnchangedFiles="true" />
-  </Target>
+
+    <Copy 
+        SourceFiles="' + '$(OutputPath)' + '$(AssemblyName).dll"
+        DestinationFolder="' + '$(SFSModsPath)' + '" 
+        SkipUnchangedFiles="true" />
+</Target>
 </Project>'
 ) | save --force $csproj; let main_cs = ('using System.Collections.Generic;
 using ModLoader;
