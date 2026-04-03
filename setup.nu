@@ -27,6 +27,7 @@ let default_mod = "MyModName"; let default_author = "Cratior"; let default_desc 
     <Reference Include="0Harmony"><HintPath>dependacies\0Harmony.dll</HintPath></Reference>
     <Reference Include="Assembly-CSharp"><HintPath>dependacies\Assembly-CSharp.dll</HintPath></Reference>
     <Reference Include="Newtonsoft.Json"><HintPath>dependacies\Newtonsoft.Json.dll</HintPath></Reference>
+    <Reference Include="UITools"><HintPath>dependacies\UITools.dll</HintPath></Reference>
     <Reference Include="UnityEngine"><HintPath>dependacies\UnityEngine.dll</HintPath></Reference>
     <Reference Include="UnityEngine.CoreModule"><HintPath>dependacies\UnityEngine.CoreModule.dll</HintPath></Reference>
     <Reference Include="UnityEngine.ImageConversionModule"><HintPath>dependacies\UnityEngine.ImageConversionModule.dll</HintPath></Reference>
