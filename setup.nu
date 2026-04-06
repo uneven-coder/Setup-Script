@@ -57,7 +57,8 @@ if $confirm != "y" {
 ^dotnet new sln -n $mod
 ^dotnet new classlib -n $mod -o $mod
 
-cp -r $"($env.USERPROFILE)\Documents\GitHub\SFS-UI-wrapped\dependacies" $"($mod)/dependacies"
+let source_dependacies = ([$env.USERPROFILE 'Documents' 'GitHub' 'SFS-UI-wrapped' 'dependacies'] | path join)
+cp -r $source_dependacies $"($mod)/dependacies"
 
 let csproj = $"($mod)/($mod).csproj"
 let csproj_content = ([
