@@ -135,6 +135,7 @@ namespace " + $ns + "
 
         public override Dictionary<string, string> Dependencies => new Dictionary<string, string>
         {
+            { \"UITools\", \"1.1.5\" }
         };
 
         public override void Early_Load()
