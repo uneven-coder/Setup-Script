@@ -53,7 +53,7 @@ if $confirm != "y" { error make { msg: "Cancelled" } }
 ^dotnet new sln -n $mod
 ^dotnet new classlib -n $mod -o $mod
 
-cp -r $"($env.USERPROFILE)\Documents\GitHub\SFS-UI-wrapped\dependacies" $"($mod)/dependacies"
+cp -r $"($env.USERPROFILE)/Documents/GitHub/SFS-UI-wrapped/dependacies" $"($mod)/dependacies"
 
 let csproj = $"($mod)/($mod).csproj"
 
