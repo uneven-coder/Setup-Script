@@ -120,36 +120,36 @@ let csproj_content = ([
 $csproj_content | save --force $csproj
 
 let nl = (char nl)
-let main_cs = "using System.Collections.Generic;" + $nl + 
-"using ModLoader;" + $nl + 
-"" + $nl + 
-"namespace " + $ns + $nl + 
-"{" + $nl + 
-"    public class Main : Mod" + $nl + 
-"    {" + $nl + 
-"        public override string ModNameID => \"" + $mod + "\";" + $nl + 
-"        public override string DisplayName => \"" + $mod + "\";" + $nl + 
-"        public override string Author => \"" + $author + "\";" + $nl + 
-"        public override string MinimumGameVersionNecessary => \"1.5.10\";" + $nl + 
-"        public override string ModVersion => \"0.0.1\";" + $nl + 
-"        public override string Description => \"" + $desc + "\";" + $nl + 
-"" + $nl + 
-"        public override Dictionary<string, string> Dependencies => new Dictionary<string, string>" + $nl + 
-"        {" + $nl + 
-"            { \"UITools\", \"1.1.5\" }" + $nl + 
-"        };" + $nl + 
-"" + $nl + 
-"        public override void Early_Load()" + $nl + 
-"        {" + $nl + 
-"            base.Early_Load();" + $nl + 
-"        }" + $nl + 
-"" + $nl + 
-"        public override void Load()" + $nl + 
-"        {" + $nl + 
-"            base.Load();" + $nl + 
-"        }" + $nl + 
-"    }" + $nl + 
-"}"
+let main_cs = 'using System.Collections.Generic;' + $nl + 
+'using ModLoader;' + $nl + 
+'' + $nl + 
+('namespace ' + $ns) + $nl + 
+'{' + $nl + 
+'    public class Main : Mod' + $nl + 
+'    {' + $nl + 
+('        public override string ModNameID => "' + $mod + '";') + $nl + 
+('        public override string DisplayName => "' + $mod + '";') + $nl + 
+('        public override string Author => "' + $author + '";') + $nl + 
+'        public override string MinimumGameVersionNecessary => "1.5.10";' + $nl + 
+'        public override string ModVersion => "0.0.1";' + $nl + 
+('        public override string Description => "' + $desc + '";') + $nl + 
+'' + $nl + 
+'        public override Dictionary<string, string> Dependencies => new Dictionary<string, string>' + $nl + 
+'        {' + $nl + 
+'            { "UITools", "1.1.5" }' + $nl + 
+'        };' + $nl + 
+'' + $nl + 
+'        public override void Early_Load()' + $nl + 
+'        {' + $nl + 
+'            base.Early_Load();' + $nl + 
+'        }' + $nl + 
+'' + $nl + 
+'        public override void Load()' + $nl + 
+'        {' + $nl + 
+'            base.Load();' + $nl + 
+'        }' + $nl + 
+'    }' + $nl + 
+'}'
 
 $main_cs | save --force $"($mod)/Main.cs"
 rm -f $"($mod)/Class1.cs"
