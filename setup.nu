@@ -73,14 +73,11 @@ namespace ' + $ns + '
         public override void Early_Load()
         {
             base.Early_Load();
-            
         }
 
         public override void Load()
         {
             base.Load();
-
-
         }
     }
 }'); $main_cs | save --force $"($mod)/Main.cs"; rm -f $"($mod)/Class1.cs"; ^dotnet sln $"($mod).sln" add $csproj; ^dotnet build $csproj -c Debug; print ("Build configured: DLL will auto-copy on msbuild")
