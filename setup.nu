@@ -119,38 +119,36 @@ let csproj_content = ([
 
 $csproj_content | save --force $csproj
 
-let main_cs = ([
-  'using System.Collections.Generic;'
-  'using ModLoader;'
-  ''
-  $"namespace ($ns)"
-  '{'
-  '    public class Main : Mod'
-  '    {'
-  '        public override string ModNameID => "' + $mod + '";'
-  '        public override string DisplayName => "' + $mod + '";'
-  '        public override string Author => "' + $author + '";'
-  '        public override string MinimumGameVersionNecessary => "1.5.10";'
-  '        public override string ModVersion => "0.0.1";'
-  '        public override string Description => "' + $desc + '";'
-  ''
-  '        public override Dictionary<string, string> Dependencies => new Dictionary<string, string>'
-  '        {'
-  '            { "UITools", "1.1.5" }'
-  '        };'
-  ''
-  '        public override void Early_Load()'
-  '        {'
-  '            base.Early_Load();'
-  '        }'
-  ''
-  '        public override void Load()'
-  '        {'
-  '            base.Load();'
-  '        }'
-  '    }'
-  '}'
-]) | str join (char nl)
+let main_cs = 'using System.Collections.Generic;' + (char nl) +
+'using ModLoader;' + (char nl) +
+'' + (char nl) +
+'namespace ' + $ns + (char nl) +
+'{' + (char nl) +
+'    public class Main : Mod' + (char nl) +
+'    {' + (char nl) +
+'        public override string ModNameID => "' + $mod + '";' + (char nl) +
+'        public override string DisplayName => "' + $mod + '";' + (char nl) +
+'        public override string Author => "' + $author + '";' + (char nl) +
+'        public override string MinimumGameVersionNecessary => "1.5.10";' + (char nl) +
+'        public override string ModVersion => "0.0.1";' + (char nl) +
+'        public override string Description => "' + $desc + '";' + (char nl) +
+'' + (char nl) +
+'        public override Dictionary<string, string> Dependencies => new Dictionary<string, string>' + (char nl) +
+'        {' + (char nl) +
+'            { "UITools", "1.1.5" }' + (char nl) +
+'        };' + (char nl) +
+'' + (char nl) +
+'        public override void Early_Load()' + (char nl) +
+'        {' + (char nl) +
+'            base.Early_Load();' + (char nl) +
+'        }' + (char nl) +
+'' + (char nl) +
+'        public override void Load()' + (char nl) +
+'        {' + (char nl) +
+'            base.Load();' + (char nl) +
+'        }' + (char nl) +
+'    }' + (char nl) +
+'}'
 
 $main_cs | save --force $"($mod)/Main.cs"
 rm -f $"($mod)/Class1.cs"
