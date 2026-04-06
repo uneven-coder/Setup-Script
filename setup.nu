@@ -4,19 +4,19 @@ let default_desc = "SFS mod with auto-generated structure"
 let default_ns = "MyMod"
 let default_year = (date now | format date "%Y")
 
-let mod_in = (input $"Project name (default: ($default_mod)): ")
+let mod_in = (input $"Project name \(default: ($default_mod)\): ")
 let mod = (if $mod_in == "" { $default_mod } else { $mod_in })
 
-let author_in = (input $"Author (default: ($default_author)): ")
+let author_in = (input $"Author \(default: ($default_author)\): ")
 let author = (if $author_in == "" { $default_author } else { $author_in })
 
-let desc_in = (input $"Description (default: ($default_desc)): ")
+let desc_in = (input $"Description \(default: ($default_desc)\): ")
 let desc = (if $desc_in == "" { $default_desc } else { $desc_in })
 
-let ns_in = (input $"Namespace (default: ($default_ns)): ")
+let ns_in = (input $"Namespace \(default: ($default_ns)\): ")
 let ns = (if $ns_in == "" { $default_ns } else { $ns_in })
 
-let year_in = (input $"Year (default: ($default_year)): ")
+let year_in = (input $"Year \(default: ($default_year)\): ")
 let year = (if $year_in == "" { $default_year } else { $year_in })
 
 let steam_root = (try {
