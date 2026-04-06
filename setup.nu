@@ -119,38 +119,36 @@ let csproj_content = ([
 
 $csproj_content | save --force $csproj
 
-let main_cs = ([
-  'using System.Collections.Generic;'
-  'using ModLoader;'
-  ''
-  $"namespace ($ns)"
-  '{'
-  '    public class Main : Mod'
-  '    {'
-  '        public override string ModNameID => "' + $mod + '";'
-  '        public override string DisplayName => "' + $mod + '";'
-  '        public override string Author => "' + $author + '";'
-  '        public override string MinimumGameVersionNecessary => "1.5.10";'
-  '        public override string ModVersion => "0.0.1";'
-  '        public override string Description => "' + $desc + '";'
-  ''
-  '        public override Dictionary<string, string> Dependencies => new Dictionary<string, string>'
-  '        {'
-  '            { "UITools", "1.1.5" }'
-  '        };'
-  ''
-  '        public override void Early_Load()'
-  '        {'
-  '            base.Early_Load();'
-  '        }'
-  ''
-  '        public override void Load()'
-  '        {'
-  '            base.Load();'
-  '        }'
-  '    }'
-  '}'
-]) | str join (char nl)
+let main_cs = "using System.Collections.Generic;
+using ModLoader;
+
+namespace " + $ns + "
+{
+    public class Main : Mod
+    {
+        public override string ModNameID => \"" + $mod + "\";
+        public override string DisplayName => \"" + $mod + "\";
+        public override string Author => \"" + $author + "\";
+        public override string MinimumGameVersionNecessary => \"1.5.10\";
+        public override string ModVersion => \"0.0.1\";
+        public override string Description => \"" + $desc + "\";
+
+        public override Dictionary<string, string> Dependencies => new Dictionary<string, string>
+        {
+            { \"UITools\", \"1.1.5\" }
+        };
+
+        public override void Early_Load()
+        {
+            base.Early_Load();
+        }
+
+        public override void Load()
+        {
+            base.Load();
+        }
+    }
+}"
 
 $main_cs | save --force $"($mod)/Main.cs"
 rm -f $"($mod)/Class1.cs"
